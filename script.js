@@ -1,11 +1,9 @@
 const xhr = new XMLHttpRequest();
 
-
 xhr.open("GET", "https://restcountries.com/v3.1/all");
 
 xhr.onload = function () {
   if (xhr.status >= 200 && xhr.status < 300) {
- 
     const data = JSON.parse(xhr.responseText);
 
     // a. Get all the countries from Asia continent/region using Filter function
@@ -25,9 +23,10 @@ xhr.onload = function () {
 
     // c. Print the details (name, capital, flag) using forEach function
     data.forEach((country) => {
-      console.log(
-        `Name: ${country.name.common}, Capital: ${country.capital}, Flag: ${country.flags.png}`
-      );
+      console.log(`Name: ${country.name.common}`);
+      console.log(`Capital: ${country.capital}`);
+        console.log(`Flag: ${country.flags.png}`);
+        console.log(`..........................`)
     });
 
     // d. Print the total population of countries using reduce function
@@ -42,9 +41,8 @@ xhr.onload = function () {
       (country) => country.currencies && country.currencies.USD
     );
     console.log("Countries using US dollars:", usDollarCountries);
-  } 
+  }
 };
-
 
 // Send the request
 xhr.send();
